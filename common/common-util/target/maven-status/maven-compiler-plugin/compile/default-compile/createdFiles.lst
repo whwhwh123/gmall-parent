@@ -1,0 +1,8 @@
+com\wh\gmall\common\util\MD5.class
+com\wh\gmall\common\result\Result.class
+com\wh\gmall\common\result\ResultCodeEnum.class
+com\wh\gmall\common\util\AuthContextHolder.class
+com\wh\gmall\common\util\DateUtil.class
+com\wh\gmall\common\util\HttpClientUtil.class
+com\wh\gmall\common\util\IpUtil.class
+com\wh\gmall\common\execption\GmallException.class

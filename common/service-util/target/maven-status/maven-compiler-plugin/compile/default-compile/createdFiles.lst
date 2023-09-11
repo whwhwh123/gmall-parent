@@ -1,0 +1,8 @@
+com\wh\gmall\common\config\MybatisPlusConfig.class
+com\wh\gmall\common\config\RedisConfig.class
+com\wh\gmall\common\constant\RedisConst.class
+com\wh\gmall\common\config\Swagger2Config.class
+com\wh\gmall\common\config\RedissonConfig.class
+com\wh\gmall\common\cache\GmallCacheAspect.class
+com\wh\gmall\common\handler\GlobalExceptionHandler.class
+com\wh\gmall\common\cache\GmallCache.class
