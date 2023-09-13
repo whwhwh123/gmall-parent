@@ -6,7 +6,9 @@ import com.wh.gmall.model.product.*;
 import com.wh.gmall.product.mapper.BaseSaleAttrMapper;
 import com.wh.gmall.product.mapper.SpuInfoMapper;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public interface ManageService {
     /**
@@ -74,8 +76,21 @@ public interface ManageService {
 
     IPage<SkuInfo> getSkuInfoPage(Page<SkuInfo> pageParam);
 
+    SkuInfo getSkuInfo(Long skuId);
+
     void onSale(Long skuId);
 
     void cancelSale(Long skuId);
 
+    BaseCategoryView getBaseCategoryViewByCategory3Id(Long category3Id);
+
+    BigDecimal getSkuPrice(Long skuId);
+
+    List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(Long skuId, Long spuId);
+
+    Map getSkuValueIdsMap(Long spuId);
+
+    List<SpuPoster> findSpuPosterBySpuId(Long spuId);
+
+    List<BaseAttrInfo> getAttrList(Long skuId);
 }

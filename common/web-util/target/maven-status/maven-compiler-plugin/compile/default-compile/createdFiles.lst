@@ -1,0 +1,2 @@
+com\wh\gmall\common\handler\GlobalExceptionHandler.class
+com\wh\gmall\common\interceptor\FeignInterceptor.class

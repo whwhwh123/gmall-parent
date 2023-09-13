@@ -1,0 +1,4 @@
+com\wh\gmall\item\service\impl\ItemServiceImpl.class
+com\wh\gmall\item\controller\ItemApiController.class
+com\wh\gmall\item\ServiceItemApplication.class
+com\wh\gmall\item\service\ItemService.class

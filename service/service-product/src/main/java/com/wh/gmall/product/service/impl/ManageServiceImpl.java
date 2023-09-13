@@ -3,17 +3,20 @@ package com.wh.gmall.product.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.google.j2objc.annotations.AutoreleasePool;
 import com.wh.gmall.model.product.*;
 import com.wh.gmall.product.mapper.*;
 import com.wh.gmall.product.service.ManageService;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ManageServiceImpl implements ManageService {
@@ -63,6 +66,8 @@ public class ManageServiceImpl implements ManageService {
     @Autowired
     private SkuSaleAttrValueMapper skuSaleAttrValueMapper;
 
+    @Autowired
+    private BaseCategoryViewMapper baseCategoryViewMapper;
 
     @Override
     public List<BaseCategory1> getCategory1() {
@@ -256,6 +261,62 @@ public class ManageServiceImpl implements ManageService {
         skuInfoUp.setIsSale(0);
         skuInfoMapper.updateById(skuInfoUp);
     }
+
+    @Override
+    public BaseCategoryView getBaseCategoryViewByCategory3Id(Long category3Id) {
+        return baseCategoryViewMapper.selectById(category3Id);
+    }
+
+    @Override
+    public BigDecimal getSkuPrice(Long skuId) {
+        SkuInfo skuInfo = skuInfoMapper.selectById(skuId);
+        if (null != skuInfo)
+            return skuInfo.getPrice();
+        return BigDecimal.ZERO;
+    }
+
+    @Override
+    public SkuInfo getSkuInfo(Long id){
+        SkuInfo skuInfo = skuInfoMapper.selectById(id);
+
+        QueryWrapper<SkuImage> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("sku_id", id);
+        List<SkuImage> skuImageList = skuImageMapper.selectList(queryWrapper);
+
+        skuInfo.setSkuImageList(skuImageList);
+        return skuInfo;
+    }
+
+    @Override
+    public List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(Long skuId, Long spuId){
+        return spuSaleAttrMapper.selectSpuSaleAttrListCheckBySku(skuId, spuId);
+    }
+
+    @Override
+    public Map getSkuValueIdsMap(Long spuId){
+        Map<Object, Object> map = new HashMap<>();
+        List<Map> mapList = skuSaleAttrValueMapper.selectSaleAttrValuesBySpu(spuId);
+        if (null != mapList && !CollectionUtils.isEmpty(mapList)){
+            for (Map skuMap : mapList){
+                map.put(skuMap.get("value_ids"), skuMap.get("sku_id"));
+            }
+        }
+        return map;
+    }
+
+    @Override
+    public List<SpuPoster> findSpuPosterBySpuId(Long spuId){
+        QueryWrapper<SpuPoster> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("spu_id", spuId);
+        return spuPosterMapper.selectList(queryWrapper);
+    }
+
+    @Override
+    public List<BaseAttrInfo> getAttrList(Long skuId) {
+
+        return baseAttrInfoMapper.selectBaseAttrInfoListBySkuId(skuId);
+    }
+
 
 
     /**

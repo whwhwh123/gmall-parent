@@ -13,6 +13,7 @@
         <module>model</module>
         <module>service</module>
         <module>server-gateway</module>
+        <module>web</module>
     </modules>
 
     <parent>

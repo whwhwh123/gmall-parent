@@ -12,6 +12,7 @@
         </collection>
 
     </resultMap>
+    <resultMap id="spuValueIdsMap" type="java.util.Map" autoMapping="true"></resultMap>
 
     <sql id="spuSaleAttr">
         sa.id ,sa.spu_id, sa.sale_attr_name,sa.base_sale_attr_id,
@@ -28,4 +29,26 @@
         where
             sa.spu_id=#{spu_id}
     </select>
+
+    <select id="selectSpuSaleAttrListCheckBySku" resultMap="spuSaleAttrMap">
+        SELECT sa.id ,sa.spu_id, sa.sale_attr_name,sa.base_sale_attr_id,
+               sv.id sale_attr_value_id,
+               sv.sale_attr_value_name,
+               skv.sku_id,
+               IF(skv.sku_id IS NULL,0,1)  is_checked
+        FROM spu_sale_attr sa
+                 INNER JOIN spu_sale_attr_value  sv ON  sa.spu_id=sv.spu_id AND sa.base_sale_attr_id=sv.base_sale_attr_id
+                 LEFT JOIN sku_sale_attr_value skv ON skv.sale_attr_value_id= sv.id AND skv.sku_id=#{skuId}
+        WHERE  sa.spu_id=#{spuId}
+        ORDER BY sv.base_sale_attr_id,sv.id
+    </select>
+
+    <select id="selectSaleAttrValuesBySpu" resultMap="spuValueIdsMap">
+        SELECT sku_id  , GROUP_CONCAT(sale_attr_value_id  ORDER BY sp.base_sale_attr_id ASC SEPARATOR '|') value_ids
+        FROM  `sku_sale_attr_value` sv
+                  INNER JOIN `spu_sale_attr_value` sp on sp.id = sv.sale_attr_value_id
+        WHERE sv.spu_id=#{spuId}
+        GROUP BY sku_id
+    </select>
+
 </mapper>

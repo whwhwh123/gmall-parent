@@ -9,12 +9,14 @@ F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\pr
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SpuImageMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\ServiceProductApplication.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\BaseCategory1Mapper.java
+F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\api\ProductApiController.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\service\BaseTrademarkService.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\SkuManageController.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SkuSaleAttrValueMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\SpuManageController.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SkuImageMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\BaseCategory2Mapper.java
+F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\BaseCategoryViewMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\BaseCategoryTrademarkController.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SkuInfoMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SkuAttrValueMapper.java
