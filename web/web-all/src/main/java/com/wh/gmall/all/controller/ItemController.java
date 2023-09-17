@@ -33,6 +33,7 @@ public class ItemController {
         System.out.println("into controller");
         // 通过skuId 查询skuInfo
         Result<Map<String, Object>> result = itemFeignClient.getItem(skuId);
+        System.out.println(result.getData());
         model.addAllAttributes(result.getData());
         return "item/item";
     }

@@ -61,7 +61,9 @@ public class GmallCacheAspect {
                 //  设置分布式锁，进入数据库进行查询数据！
                 RLock lock = redissonClient.getLock(key + ":lock");
                 //  调用trylock方法
-                boolean result = lock.tryLock(RedisConst.SKULOCK_EXPIRE_PX1, RedisConst.SKULOCK_EXPIRE_PX2, TimeUnit.SECONDS);
+                boolean result = lock.tryLock(RedisConst.SKULOCK_EXPIRE_PX1,
+                                                RedisConst.SKULOCK_EXPIRE_PX2,
+                                                TimeUnit.SECONDS);
                 //  判断
                 if(result){
                     try {

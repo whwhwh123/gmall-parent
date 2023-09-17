@@ -3,9 +3,13 @@ package com.wh.gmall.product.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.wh.gmall.common.cache.MyGmallCache;
+import com.wh.gmall.common.constant.RedisConst;
 import com.wh.gmall.model.product.*;
 import com.wh.gmall.product.mapper.*;
 import com.wh.gmall.product.service.ManageService;
+import org.redisson.api.RBloomFilter;
+import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,6 +72,9 @@ public class ManageServiceImpl implements ManageService {
 
     @Autowired
     private BaseCategoryViewMapper baseCategoryViewMapper;
+
+    @Autowired
+    private RedissonClient redissonClient;
 
     @Override
     public List<BaseCategory1> getCategory1() {
@@ -231,6 +238,9 @@ public class ManageServiceImpl implements ManageService {
                 skuAttrValueMapper.insert(skuAttrValue);
             }
         }
+
+        RBloomFilter<Long> rBloomFilter = redissonClient.getBloomFilter(RedisConst.SKU_BLOOM_FILTER);
+        rBloomFilter.add(skuInfo.getId());
     }
 
     @Override
@@ -263,6 +273,7 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
+    @MyGmallCache(prefix = "categoryViewByCategory3Id:")
     public BaseCategoryView getBaseCategoryViewByCategory3Id(Long category3Id) {
         return baseCategoryViewMapper.selectById(category3Id);
     }
@@ -276,6 +287,7 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
+    @MyGmallCache(prefix = RedisConst.SKUKEY_PREFIX)
     public SkuInfo getSkuInfo(Long id){
         SkuInfo skuInfo = skuInfoMapper.selectById(id);
 
@@ -288,11 +300,13 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
+    @MyGmallCache(prefix = "spuSaleAttrListCheckBySku:")
     public List<SpuSaleAttr> getSpuSaleAttrListCheckBySku(Long skuId, Long spuId){
         return spuSaleAttrMapper.selectSpuSaleAttrListCheckBySku(skuId, spuId);
     }
 
     @Override
+    @MyGmallCache(prefix = "saleAttrValuesBySpu:")
     public Map getSkuValueIdsMap(Long spuId){
         Map<Object, Object> map = new HashMap<>();
         List<Map> mapList = skuSaleAttrValueMapper.selectSaleAttrValuesBySpu(spuId);
@@ -305,6 +319,7 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
+    @MyGmallCache(prefix = "spuPosterList:")
     public List<SpuPoster> findSpuPosterBySpuId(Long spuId){
         QueryWrapper<SpuPoster> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("spu_id", spuId);
@@ -312,6 +327,7 @@ public class ManageServiceImpl implements ManageService {
     }
 
     @Override
+    @MyGmallCache(prefix = "baseAttrInfoList:")
     public List<BaseAttrInfo> getAttrList(Long skuId) {
 
         return baseAttrInfoMapper.selectBaseAttrInfoListBySkuId(skuId);

@@ -5,6 +5,7 @@ F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\pr
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\BaseTrademarkController.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SpuPosterMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\BaseManageController.java
+F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\service\impl\TestServiceImpl.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\service\ManageService.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SpuImageMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\ServiceProductApplication.java
@@ -23,6 +24,7 @@ F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\pr
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\FileUploadController.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\BaseAttrInfoMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SpuSaleAttrMapper.java
+F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\service\TestService.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SpuInfoMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\service\BaseCategoryTrademarkService.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\SpuSaleAttrValueMapper.java
@@ -30,3 +32,4 @@ F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\pr
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\BaseSaleAttrMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\mapper\BaseCategoryTrademarkMapper.java
 F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\service\impl\BaseCategoryTrademarkServiceImpl.java
+F:\Codes\Java\gmall-parent\service\service-product\src\main\java\com\wh\gmall\product\controller\TestController.java

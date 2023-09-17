@@ -3,6 +3,7 @@ com\wh\gmall\product\mapper\BaseAttrValueMapper.class
 com\wh\gmall\product\controller\BaseManageController.class
 com\wh\gmall\product\service\impl\BaseCategoryTrademarkServiceImpl.class
 com\wh\gmall\product\mapper\SpuInfoMapper.class
+com\wh\gmall\product\service\impl\TestServiceImpl.class
 com\wh\gmall\product\api\ProductApiController.class
 com\wh\gmall\product\service\impl\BaseTrademarkServiceImpl.class
 com\wh\gmall\product\mapper\SkuSaleAttrValueMapper.class
@@ -18,6 +19,7 @@ com\wh\gmall\product\mapper\SpuSaleAttrValueMapper.class
 com\wh\gmall\product\service\impl\ManageServiceImpl.class
 com\wh\gmall\product\mapper\BaseCategoryTrademarkMapper.class
 com\wh\gmall\product\mapper\SpuImageMapper.class
+com\wh\gmall\product\service\TestService.class
 com\wh\gmall\product\service\ManageService.class
 com\wh\gmall\product\mapper\BaseCategory1Mapper.class
 com\wh\gmall\product\mapper\BaseCategoryViewMapper.class
@@ -29,4 +31,5 @@ com\wh\gmall\product\mapper\SkuInfoMapper.class
 com\wh\gmall\product\mapper\BaseCategory3Mapper.class
 com\wh\gmall\product\mapper\SpuSaleAttrMapper.class
 com\wh\gmall\product\controller\SkuManageController.class
+com\wh\gmall\product\controller\TestController.class
 com\wh\gmall\product\mapper\BaseSaleAttrMapper.class
