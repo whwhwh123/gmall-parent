@@ -20,7 +20,7 @@ public class RedisConst {
 
     public static final String SKU_BLOOM_FILTER = "sku:bloom:filter";
 
-
+    public static final String BASE_CATEGORY_VIEW = "baseCategoryView";
 
 
 

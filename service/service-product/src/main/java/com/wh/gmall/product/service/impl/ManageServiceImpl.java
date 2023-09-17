@@ -1,5 +1,7 @@
 package com.wh.gmall.product.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -16,11 +18,15 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import springfox.documentation.spring.web.json.Json;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class ManageServiceImpl implements ManageService {
@@ -333,6 +339,58 @@ public class ManageServiceImpl implements ManageService {
         return baseAttrInfoMapper.selectBaseAttrInfoListBySkuId(skuId);
     }
 
+    @Override
+    @MyGmallCache(prefix = RedisConst.BASE_CATEGORY_VIEW)
+    public List<JSONObject> getBaseCategoryList() {
+        List<JSONObject> result = new ArrayList<>();
+
+        List<BaseCategoryView> baseCategoryViewList = baseCategoryViewMapper.selectList(null);
+
+        Map<Long, List<BaseCategoryView>> category1Map =
+                baseCategoryViewList.stream().collect(Collectors.groupingBy(BaseCategoryView::getCategory1Id));
+
+        int index = 1;
+        for (Map.Entry<Long, List<BaseCategoryView>> category1Entry : category1Map.entrySet()) {
+            JSONObject category1List = new JSONObject();
+            category1List.put("index", index++);
+
+            Long category1Id = category1Entry.getKey();
+            category1List.put("categoryId", category1Id);
+
+            String category1Name = category1Entry.getValue().get(0).getCategory1Name();
+            category1List.put("categoryName", category1Name);
+
+            Map<Long, List<BaseCategoryView>> category2Map =
+                    category1Entry.getValue().stream().collect(Collectors.groupingBy(BaseCategoryView::getCategory2Id));
+
+            List<JSONObject> category1Child = new ArrayList<>();
+            for (Map.Entry<Long, List<BaseCategoryView>> category2Entry : category2Map.entrySet()) {
+                JSONObject category2List = new JSONObject();
+
+                Long category2Id = category2Entry.getKey();
+                category2List.put("categoryId", category2Id);
+
+                String category2Name = category2Entry.getValue().get(0).getCategory2Name();
+                category2List.put("categoryName", category2Name);
+
+                List<JSONObject> category2Child = new ArrayList<>();
+                for (BaseCategoryView baseCategoryView : category2Entry.getValue()) {
+                    JSONObject category3Object = new JSONObject();
+                    category3Object.put("categoryId", baseCategoryView.getCategory3Id());
+                    category3Object.put("categoryName", baseCategoryView.getCategory3Name());
+                    category2Child.add(category3Object);
+                }
+                category2List.put("categoryChild", category2Child);
+
+                category1Child.add(category2List);
+            }
+            category1List.put("categoryChild", category1Child);
+
+            result.add(category1List);
+        }
+
+        return result;
+    }
 
 
     /**

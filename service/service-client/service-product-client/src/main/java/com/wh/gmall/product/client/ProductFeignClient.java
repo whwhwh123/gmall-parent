@@ -1,5 +1,6 @@
 package com.wh.gmall.product.client;
 
+import com.alibaba.fastjson.JSONObject;
 import com.wh.gmall.model.product.*;
 import com.wh.gmall.product.client.impl.ProductDegradeFeignClient;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -63,5 +64,9 @@ public interface ProductFeignClient {
     @GetMapping("/api/product/inner/getAttrList/{skuId}")
     List<BaseAttrInfo> getAttrList(@PathVariable("skuId") Long skuId);
 
-
+    /**
+     * 获取首页商品分类
+     */
+    @GetMapping("/api/product/inner/getBaseCategoryList")
+    List<JSONObject> getBaseCategoryList();
 }
