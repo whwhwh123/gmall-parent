@@ -1,11 +1,12 @@
-com\wh\gmall\item\service\impl\ItemServiceImpl$3.class
 com\wh\gmall\item\service\impl\ItemServiceImpl$6.class
 com\wh\gmall\item\service\impl\ItemServiceImpl.class
-com\wh\gmall\item\controller\ItemApiController.class
-com\wh\gmall\item\service\impl\ItemServiceImpl$2.class
 com\wh\gmall\item\service\ItemService.class
 com\wh\gmall\item\config\ThreadPoolConfig.class
 com\wh\gmall\item\service\impl\ItemServiceImpl$4.class
-com\wh\gmall\item\service\impl\ItemServiceImpl$5.class
+com\wh\gmall\item\service\impl\ItemServiceImpl$7.class
 com\wh\gmall\item\ServiceItemApplication.class
+com\wh\gmall\item\service\impl\ItemServiceImpl$3.class
+com\wh\gmall\item\controller\ItemApiController.class
+com\wh\gmall\item\service\impl\ItemServiceImpl$2.class
+com\wh\gmall\item\service\impl\ItemServiceImpl$5.class
 com\wh\gmall\item\service\impl\ItemServiceImpl$1.class

@@ -2,19 +2,15 @@ package com.wh.gmall.product.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sun.media.sound.SoftMixingDataLine;
 import com.wh.gmall.model.product.BaseCategoryTrademark;
 import com.wh.gmall.model.product.BaseTrademark;
 import com.wh.gmall.model.product.CategoryTrademarkVo;
 import com.wh.gmall.product.mapper.BaseCategoryTrademarkMapper;
 import com.wh.gmall.product.mapper.BaseTrademarkMapper;
 import com.wh.gmall.product.service.BaseCategoryTrademarkService;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.web.config.QuerydslWebConfiguration;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;

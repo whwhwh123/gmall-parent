@@ -1,2 +1,4 @@
 com\wh\gmall\all\controller\ItemController.class
+com\wh\gmall\all\controller\IndexController.class
+com\wh\gmall\all\controller\ListController.class
 com\wh\gmall\all\WebAllApplication.class

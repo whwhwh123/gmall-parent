@@ -37,16 +37,24 @@ public class ProductDegradeFeignClient implements ProductFeignClient {
     public Map getSkuValueIdsMap(Long spuId) {
         return null;
     }
+
     @Override
     public List<SpuPoster> getSpuPosterBySpuId(Long spuId) {
         return null;
     }
+
     @Override
     public List<BaseAttrInfo> getAttrList(Long skuId) {
         return null;
     }
+
     @Override
     public List<JSONObject> getBaseCategoryList() {
+        return null;
+    }
+
+    @Override
+    public BaseTrademark getTrademark(Long tmId) {
         return null;
     }
 }

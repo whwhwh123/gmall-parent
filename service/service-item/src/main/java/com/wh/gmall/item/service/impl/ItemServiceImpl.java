@@ -3,6 +3,7 @@ package com.wh.gmall.item.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.wh.gmall.common.constant.RedisConst;
 import com.wh.gmall.item.service.ItemService;
+import com.wh.gmall.list.client.ListFeignClient;
 import com.wh.gmall.model.product.*;
 import com.wh.gmall.product.client.ProductFeignClient;
 import org.redisson.api.RBloomFilter;
@@ -25,6 +26,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private ProductFeignClient productFeignClient;
+
+    @Autowired
+    private ListFeignClient listFeignClient;
 
     @Autowired
     private RedissonClient redissonClient;
@@ -109,13 +113,21 @@ public class ItemServiceImpl implements ItemService {
             }
         }, threadPoolExecutor);
 
+        CompletableFuture<Void> incrHotScoreCompletableFuture = CompletableFuture.runAsync(new Runnable() {
+            @Override
+            public void run() {
+                listFeignClient.incrHotScore(skuId);
+            }
+        }, threadPoolExecutor);
+
         CompletableFuture.allOf(skuInfoCompletableFuture,
                                 skuValueIdsMapCompletableFuture,
                                 skuPriceCompletableFuture,
                                 skuAttrInfoListCompletableFuture,
                                 spuSaleAttrListCompletableFuture,
                                 spuPosterListCompletableFuture,
-                                baseCategoryViewCompletableFuture).join();
+                                baseCategoryViewCompletableFuture,
+                                incrHotScoreCompletableFuture).join();
 
         return result;
     }
