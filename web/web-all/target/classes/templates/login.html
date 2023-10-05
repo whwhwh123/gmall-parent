@@ -43,23 +43,24 @@
 						</div>
 						<div id="profile" class="tab-pane active">
 							<form class="sui-form">
-								<div class="input-prepend"><span class="add-on loginname"></span>
-									<input id="inputName" type="text" v-model="user.loginName" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
-								</div>
-								<div class="input-prepend"><span class="add-on loginpwd"></span>
-									<input id="inputPassword" type="password" v-model="user.passwd" placeholder="请输入密码" class="span2 input-xfat">
-								</div>
-								<div class="setting">
-									<label class="checkbox inline">
-										<input name="m1" type="checkbox" value="2" checked="">
-										自动登录
-									</label>
-									<span class="forget">忘记密码？</span>
-								</div>
-								<div class="logined">
-									<a class="sui-btn btn-block btn-xlarge btn-danger" href="javascript:" @click="submitLogin()">登&nbsp;&nbsp;录</a>
-								</div>
+							   <div class="input-prepend"><span class="add-on loginname"></span>
+								  <input id="inputName" type="text" v-model="user.loginName" placeholder="邮箱/用户名/手机号" class="span2 input-xfat">
+							   </div>
+							   <div class="input-prepend"><span class="add-on loginpwd"></span>
+								  <input id="inputPassword" type="password" v-model="user.passwd" placeholder="请输入密码" class="span2 input-xfat">
+							   </div>
+							   <div class="setting">
+								  <label class="checkbox inline">
+									 <input name="m1" type="checkbox" value="2" checked="">
+									 自动登录
+								  </label>
+								  <span class="forget">忘记密码？</span>
+							   </div>
+							   <div class="logined">
+								  <a class="sui-btn btn-block btn-xlarge btn-danger" href="javascript:" @click="submitLogin()">登&nbsp;&nbsp;录</a>
+							   </div>
 							</form>
+
 							<div class="otherlogin">
 								<div class="types">
 									<ul>
@@ -132,7 +133,7 @@
 						//	输入日志：是否有 originUrl 回跳url！
 						//	originUrl = 记录用户在哪点击的登录url ，当用户登录成功之后，又跳转到了原来的url！
                         console.log("originUrl:"+this.originUrl);
-                        if(this.originUrl == ''){
+                        if(this.originUrl == '' || this.originUrl == null){
                             window.location.href="http://www.gmall.com/index.html"
                             return ;
                         } else {

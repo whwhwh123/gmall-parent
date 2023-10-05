@@ -1,2 +1,4 @@
 com\wh\gmall\gateway\config\CrossConfig.class
+com\wh\gmall\gateway\config\RedisConfig.class
+com\wh\gmall\gateway\filter\AuthGlobalFilter.class
 com\wh\gmall\gateway\ServerGatewayApplication.class
