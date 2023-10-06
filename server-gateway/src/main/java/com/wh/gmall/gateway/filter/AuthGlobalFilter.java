@@ -73,11 +73,20 @@ public class AuthGlobalFilter implements GlobalFilter {
             }
         }
 
-        if (!StringUtils.isEmpty(userId)){
-            request.mutate().header("userId",userId).build();
-            // 将现在的request 变成 exchange对象
+        //设置网关请求头
+        String userTempId = this.getUserTempId(request);
+
+        if(!StringUtils.isEmpty(userId) || !StringUtils.isEmpty(userTempId)) {
+            if(!StringUtils.isEmpty(userId)) {
+                request.mutate().header("userId", userId).build();
+            }
+            if(!StringUtils.isEmpty(userTempId)) {
+                request.mutate().header("userTempId", userTempId).build();
+            }
+            //将现在的request 变成 exchange对象
             return chain.filter(exchange.mutate().request(request).build());
         }
+
         return chain.filter(exchange);
     }
 
@@ -110,6 +119,27 @@ public class AuthGlobalFilter implements GlobalFilter {
         }
         return "";
     }
+
+    /**
+     * 获取当前用户临时用户id
+     * @param request
+     * @return
+     */
+    private String getUserTempId(ServerHttpRequest request) {
+        String userTempId = "";
+        List<String> tokenList = request.getHeaders().get("userTempId");
+        if(null  != tokenList) {
+            userTempId = tokenList.get(0);
+        } else {
+            MultiValueMap<String, HttpCookie> cookieMultiValueMap =  request.getCookies();
+            HttpCookie cookie = cookieMultiValueMap.getFirst("userTempId");
+            if(cookie != null){
+                userTempId = URLDecoder.decode(cookie.getValue());
+            }
+        }
+        return userTempId;
+    }
+
 
 
     /**

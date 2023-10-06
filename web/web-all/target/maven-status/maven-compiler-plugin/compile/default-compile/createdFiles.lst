@@ -3,3 +3,4 @@ com\wh\gmall\all\controller\IndexController.class
 com\wh\gmall\all\controller\ListController.class
 com\wh\gmall\all\controller\PasswordController.class
 com\wh\gmall\all\WebAllApplication.class
+com\wh\gmall\all\controller\CartController.class
